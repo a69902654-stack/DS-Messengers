@@ -172,7 +172,7 @@ Open a Pull Request
 
 📬 Contact
 Developer: Amirarsalan Dolatsha
-Email: amiraarsalan1566@gmail.com
+Email: a69902654@gmail.com
 GitHub: a69902654-stack
 Portfolio: amir-arsalan.netlify.app
 
