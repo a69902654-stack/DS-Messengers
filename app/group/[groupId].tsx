@@ -11,18 +11,18 @@ import * as MediaLibrary from 'expo-media-library';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useEffect, useRef, useState } from 'react';
 import {
-  ActivityIndicator,
-  Alert,
-  Clipboard,
-  FlatList,
-  KeyboardAvoidingView,
-  Modal,
-  Platform,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View
+    ActivityIndicator,
+    Alert,
+    Clipboard,
+    FlatList,
+    KeyboardAvoidingView,
+    Modal,
+    Platform,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -81,6 +81,7 @@ export default function GroupChatScreen() {
     if (data) setMyRole(data.role as GroupMember['role']);
   };
 
+  // حذف console.log های debug از production
   const loadMessages = async () => {
     const { data } = await supabase
       .from('messages')
@@ -88,7 +89,6 @@ export default function GroupChatScreen() {
       .eq('group_id', groupId)
       .order('timestamp', { ascending: true });
     if (data) {
-      console.log('Loaded messages with replies:', data.map(m => ({ id: m.id, reply_to_id: m.reply_to_id })));
       setMessages(data as Message[]);
     }
     setLoading(false);
@@ -304,8 +304,6 @@ export default function GroupChatScreen() {
       newMsg.reply_to_sender = replyData.reply_to_sender;
     }
 
-    console.log('Sending message with reply:', replyData);
-
     const savedReplyTo = replyTo;
     setReplyTo(null);
 
@@ -316,7 +314,6 @@ export default function GroupChatScreen() {
       if (savedReplyTo) setReplyTo(savedReplyTo);
     } else if (data) {
       const newMessage = { ...(data as Message), ...replyData };
-      console.log('Message saved with reply data:', newMessage);
       setMessages((prev) => {
         if (prev.some((m) => m.id === newMessage.id)) return prev;
         return [...prev, newMessage];
@@ -506,11 +503,6 @@ export default function GroupChatScreen() {
   const renderMessage = ({ item }: { item: Message }) => {
     const isMine = item.sender_id === currentUser?.id;
     const isPinned = item.is_pinned;
-
-    // دیباگ برای بررسی reply data
-    if (item.reply_to_id) {
-      console.log(`Message ${item.id} has reply_to_id: ${item.reply_to_id}, content: ${item.reply_to_content}`);
-    }
 
     const webHandlers = Platform.OS === 'web' ? {
       onMouseDown: () => {

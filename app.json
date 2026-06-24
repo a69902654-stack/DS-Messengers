@@ -60,6 +60,12 @@
           "photosPermission": "برای انتخاب تصویر نیاز به دسترسی داریم.",
           "cameraPermission": "برای گرفتن عکس نیاز به دسترسی داریم."
         }
+      ],
+      [
+        "expo-av",
+        {
+          "microphonePermission": "برای ضبط پیام صوتی نیاز به دسترسی داریم."
+        }
       ]
     ],
     "experiments": {
