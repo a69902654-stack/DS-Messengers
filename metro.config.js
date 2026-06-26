@@ -4,12 +4,21 @@ const { getDefaultConfig } = require('expo/metro-config');
 /** @type {import('expo/metro-config').MetroConfig} */
 const config = getDefaultConfig(__dirname);
 
-// Fix: @supabase/realtime-js bundles a nested 'ws' package that imports
-// Node.js built-in 'stream'. We intercept and redirect to our local shim.
+// Fix: @supabase/realtime-js bundles a nested 'ws' package that uses
+// Node.js built-ins (stream, zlib, etc.) unavailable in React Native.
+// We redirect 'ws' to a shim that uses the native WebSocket global.
 const originalResolveRequest = config.resolver.resolveRequest;
 
 config.resolver.resolveRequest = (context, moduleName, platform) => {
-  if (moduleName === 'stream') {
+  // Redirect the nested 'ws' package to our shim
+  if (moduleName === 'ws') {
+    return {
+      filePath: require.resolve('./shims/ws.js'),
+      type: 'sourceFile',
+    };
+  }
+  // Redirect Node.js built-ins to empty shims
+  if (moduleName === 'stream' || moduleName === 'zlib' || moduleName === 'fs' || moduleName === 'net' || moduleName === 'tls') {
     return {
       filePath: require.resolve('./shims/stream.js'),
       type: 'sourceFile',
