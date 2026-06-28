@@ -9,6 +9,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      NODE_ENV: production
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -25,7 +28,7 @@ jobs:
         run: npm install -g expo-cli eas-cli
 
       - name: Prebuild Android project
-        run: npx expo prebuild --platform android
+        run: NODE_ENV=production npx expo prebuild --platform android --no-install
 
       - name: Setup Java
         uses: actions/setup-java@v4
@@ -37,6 +40,8 @@ jobs:
         uses: android-actions/setup-android@v3
 
       - name: Build APK
+        env:
+          NODE_ENV: production
         run: |
           cd android
           chmod +x gradlew
