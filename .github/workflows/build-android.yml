@@ -20,28 +20,28 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
 
+      # بدون devDependencies تا expo-dev-client داخل APK release نرود
       - name: Install dependencies
-        run: npm install
+        run: npm ci --omit=dev
 
-      - name: Install Expo CLI
-        run: npm install -g expo-cli eas-cli
+      - name: Validate JS bundle
+        run: npx expo export --platform android
 
       - name: Prebuild Android project
-        run: NODE_ENV=production npx expo prebuild --platform android --no-install
+        run: npx expo prebuild --platform android --no-install
 
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
-          java-version: '17'
+          distribution: temurin
+          java-version: 17
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
       - name: Build APK
-        env:
-          NODE_ENV: production
         run: |
           cd android
           chmod +x gradlew
