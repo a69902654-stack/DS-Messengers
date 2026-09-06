@@ -1,9 +1,9 @@
-import MiniMusicPlayer from '@/components/mini-music-player';
-import { MusicProvider } from '@/context/music-context';
 import { Ionicons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
 import { StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import MiniMusicPlayer from '../../components/mini-music-player';
+import { MusicProvider } from '../../context/music-context';
 
 export default function TabLayout() {
   const insets = useSafeAreaInsets();

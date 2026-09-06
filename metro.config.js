@@ -1,14 +1,8 @@
 // https://docs.expo.dev/guides/customizing-metro
 const { getDefaultConfig } = require('expo/metro-config');
-const path = require('path');
 
 /** @type {import('expo/metro-config').MetroConfig} */
 const config = getDefaultConfig(__dirname);
-
-// Add alias support for @/
-config.resolver.alias = {
-  '@': path.resolve(__dirname),
-};
 
 // Fix: @supabase/realtime-js bundles a nested 'ws' package that uses
 // Node.js built-ins (stream, zlib, etc.) unavailable in React Native.
