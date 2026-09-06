@@ -1,8 +1,8 @@
+import { useMusic } from '../context/music-context';
 import { Ionicons } from '@expo/vector-icons';
 import Slider from '@react-native-community/slider';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useMusic } from '../context/music-context';
 
 /**
  * مینی پلیر که بالای نویگیشن بار نمایش داده می‌شه وقتی آهنگ در حال پخشه.

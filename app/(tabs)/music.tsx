@@ -1,4 +1,4 @@
-import { MusicTrack, useMusic } from '@/context/music-context';
+import { MusicTrack, useMusic } from '../../context/music-context';
 import { Ionicons } from '@expo/vector-icons';
 import { useCallback } from 'react';
 import {

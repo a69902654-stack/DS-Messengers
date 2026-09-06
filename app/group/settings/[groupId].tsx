@@ -1,7 +1,7 @@
-import UserAvatar from '@/components/user-avatar';
-import { supabase } from '@/config/supabase';
-import { useAuth } from '@/context/auth-context';
-import { Group, GroupMember } from '@/types';
+import UserAvatar from '../../../components/user-avatar';
+import { supabase } from '../../../config/supabase';
+import { useAuth } from '../../../context/auth-context';
+import { Group, GroupMember } from '../../../types';
 import { Ionicons } from '@expo/vector-icons';
 import * as ExpoFS from 'expo-file-system/legacy';
 import { Image } from 'expo-image';

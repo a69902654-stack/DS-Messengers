@@ -1,7 +1,7 @@
-import AudioMessage from '@/components/audio-message';
-import { supabase } from '@/config/supabase';
-import { useAuth } from '@/context/auth-context';
-import { Group, GroupMember, Message } from '@/types';
+import AudioMessage from '../../components/audio-message';
+import { supabase } from '../../config/supabase';
+import { useAuth } from '../../context/auth-context';
+import { Group, GroupMember, Message } from '../../types';
 import { Ionicons } from '@expo/vector-icons';
 import * as DocumentPicker from 'expo-document-picker';
 import * as ExpoFS from 'expo-file-system/legacy';

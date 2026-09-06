@@ -1,4 +1,4 @@
-import { useMusic } from '@/context/music-context';
+import { useMusic } from '../context/music-context';
 import { Ionicons } from '@expo/vector-icons';
 import Slider from '@react-native-community/slider';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';

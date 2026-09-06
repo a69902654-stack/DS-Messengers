@@ -1,6 +1,6 @@
-import { supabase } from '@/config/supabase';
-import { useAuth } from '@/context/auth-context';
-import { User } from '@/types';
+import { supabase } from '../../config/supabase';
+import { useAuth } from '../../context/auth-context';
+import { User } from '../../types';
 import { Ionicons } from '@expo/vector-icons';
 import * as Contacts from 'expo-contacts';
 import { useRouter } from 'expo-router';

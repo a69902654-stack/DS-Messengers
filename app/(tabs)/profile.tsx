@@ -1,6 +1,6 @@
-import { isUserAdmin } from '@/config/admins';
-import { supabase } from '@/config/supabase';
-import { useAuth } from '@/context/auth-context';
+import { isUserAdmin } from '../../config/admins';
+import { supabase } from '../../config/supabase';
+import { useAuth } from '../../context/auth-context';
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as ExpoFS from 'expo-file-system/legacy';

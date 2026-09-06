@@ -1,8 +1,8 @@
-import AudioMessage from '@/components/audio-message';
-import { supabase } from '@/config/supabase';
-import { useAuth } from '@/context/auth-context';
-import { useMusic } from '@/context/music-context';
-import { Group, User } from '@/types';
+import AudioMessage from '../../components/audio-message';
+import { supabase } from '../../config/supabase';
+import { useAuth } from '../../context/auth-context';
+import { useMusic } from '../../context/music-context';
+import { Group, User } from '../../types';
 import { Ionicons } from '@expo/vector-icons';
 import * as ExpoFS from 'expo-file-system/legacy';
 import { useCallback, useRef, useState } from 'react';

@@ -1,7 +1,7 @@
-import UserAvatar from '@/components/user-avatar';
-import { supabase } from '@/config/supabase';
-import { useAuth } from '@/context/auth-context';
-import { Group, Message, User } from '@/types';
+import UserAvatar from '../../components/user-avatar';
+import { supabase } from '../../config/supabase';
+import { useAuth } from '../../context/auth-context';
+import { Group, Message, User } from '../../types';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { useEffect, useRef, useState } from 'react';
@@ -27,7 +27,7 @@ type ConversationItem = {
 
 type ListItem =
   | { type: 'conversation'; data: ConversationItem }
-  | { type: 'group'; data: import('@/types').Group };
+  | { type: 'group'; data: import('../../types').Group };
 
 export default function ChatsScreen() {
   const { currentUser, signOut } = useAuth();

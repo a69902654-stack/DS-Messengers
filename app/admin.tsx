@@ -1,6 +1,6 @@
-import { supabase } from '@/config/supabase';
-import { useAuth } from '@/context/auth-context';
-import { isUserAdmin } from '@/config/admins';
+import { supabase } from '../config/supabase';
+import { useAuth } from '../context/auth-context';
+import { isUserAdmin } from '../config/admins';
 import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import {
