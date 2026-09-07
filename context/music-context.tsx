@@ -90,19 +90,28 @@ export function MusicProvider({ children }: { children: React.ReactNode }) {
   };
 
   useEffect(() => {
-    Audio.setAudioModeAsync({
-      allowsRecordingIOS: false,
-      staysActiveInBackground: true,
-      playsInSilentModeIOS: true,
-      shouldDuckAndroid: true,
-    });
-
-    MediaLibrary.getPermissionsAsync().then(({ status }) => {
-      if (status === 'granted') {
-        setPermissionGranted(true);
-        loadTracks();
+    (async () => {
+      try {
+        await Audio.setAudioModeAsync({
+          allowsRecordingIOS: false,
+          staysActiveInBackground: true,
+          playsInSilentModeIOS: true,
+          shouldDuckAndroid: true,
+        });
+      } catch (e) {
+        console.warn('Failed to set audio mode:', e);
       }
-    });
+
+      try {
+        const { status } = await MediaLibrary.getPermissionsAsync();
+        if (status === 'granted') {
+          setPermissionGranted(true);
+          await loadTracks();
+        }
+      } catch (e) {
+        console.warn('Failed to check media library permissions:', e);
+      }
+    })();
   }, []);
 
   // AI جست‌وجوی لوکال — fuzzy search روی نام فایل
